@@ -31,4 +31,9 @@ class CurrencyTest < Minitest::Test
     assert_equal(30, result1 + result2)
   end
 
+  def test_subtracting_currency_objects_with_same_currency_code
+    result1 = Currency.new(10, "USD")
+    result2 = Currency.new(20, "USD")
+    assert_equal(10, result2 - result1)
+  end
 end

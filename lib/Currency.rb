@@ -15,4 +15,10 @@ class Currency
       @value += other.value
     end
   end
+
+  def - (other)
+    if other.is_a?(Currency) && other.code == code
+      @value -= other.value
+    end
+  end
 end
