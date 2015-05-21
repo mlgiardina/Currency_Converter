@@ -1,11 +1,12 @@
 class Currency
-  attr_accessor :currency_object
+  attr_accessor :value, :code
 
   def initialize(value, code)
-    @currency_object = {
-      value: value,
-      code: code
-    }
+      @value = value
+      @code = code
   end
 
+  def == (other)
+    other.is_a?(Currency) && other.value == self.value && other.code == self.code
+  end
 end
