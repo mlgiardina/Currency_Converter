@@ -1,9 +1,11 @@
 class Currency
-  attr_accessor :value, :code
+  attr_accessor :currency_object
 
   def initialize(value, code)
-    @value = value
-    @code = code
+    @currency_object = {
+      value: value,
+      code: code
+    }
   end
 
 end
