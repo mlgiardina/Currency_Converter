@@ -24,6 +24,14 @@ class Currency
   def - (other)
     if other.is_a?(Currency) && other.code == code
       @value -= other.value
+    else
+      raise DifferentCurrencyCodeError
+    end
+  end
+
+  def * (num)
+    if num.is_a?(Fixnum) || num.is_a?(Float)
+      @value *= num
     end
   end
 end

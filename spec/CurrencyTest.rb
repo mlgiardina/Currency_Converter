@@ -44,5 +44,9 @@ class CurrencyTest < Minitest::Test
     assert_raises(*DifferentCurrencyCodeError) {result1 - result2}
   end
 
+  def test_can_multiply_by_fixnums_and_floats
+    result1 = Currency.new(10, "USD")
+    assert_equal(50, result1 * 5)
+  end
 
 end
