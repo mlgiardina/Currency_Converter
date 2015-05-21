@@ -1,3 +1,6 @@
+class DifferentCurrencyCodeError < StandardError
+end
+
 class Currency
   attr_accessor :value, :code
 
@@ -13,6 +16,8 @@ class Currency
   def + (other)
     if other.is_a?(Currency) && other.code == code
       @value += other.value
+    else
+      raise DifferentCurrencyCodeError
     end
   end
 

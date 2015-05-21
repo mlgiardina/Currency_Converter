@@ -36,4 +36,13 @@ class CurrencyTest < Minitest::Test
     result2 = Currency.new(20, "USD")
     assert_equal(10, result2 - result1)
   end
+
+  def test_cannot_add_or_subtract_different_currency_codes_together
+    result1 = Currency.new(10, "USD")
+    result2 = Currency.new(10, "EUR")
+    assert_raises(*DifferentCurrencyCodeError) {result1 + result2}
+    assert_raises(*DifferentCurrencyCodeError) {result1 - result2}
+  end
+
+
 end
