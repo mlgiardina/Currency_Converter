@@ -13,19 +13,19 @@ class CurrencyConverterTest < Minitest::Test
       :USD => 1,
       :EUR => 0.90
     }
-    result = CurrencyConverter.new(hash)
-    assert(result.exchange_rates)
+    test = CurrencyConverter.new(hash)
+    assert(test.exchange_rates)
   end
 
   def test_can_convert_currency
     old_currency = Currency.new(10, :USD)
-    currency_converter = CurrencyConverter.new({:USD => 1, :EUR => 0.90})
+    currency_converter = CurrencyConverter.new({ :USD => 1, :EUR => 0.90 })
     exchanged_currency = currency_converter.make_exchange(old_currency, :EUR)
     assert_equal(exchanged_currency, Currency.new(9.0, :EUR))
   end
 
   def test_can_convert_multiple_currencies
-    currency_converter = CurrencyConverter.new({:USD => 1, :EUR => 0.9, :GBP => 0.65, :INR => 63.48})
+    currency_converter = CurrencyConverter.new({ :USD => 1, :EUR => 0.9, :GBP => 0.65, :INR => 63.48 })
     us_currency = Currency.new(10, :USD)
     eur_currency = Currency.new(10, :EUR)
     gbp_currency = Currency.new(10, :GBP)
@@ -41,9 +41,9 @@ class CurrencyConverterTest < Minitest::Test
   end
 
   def test_raise_unknown_currency_error
-    currency_converter = CurrencyConverter.new({:USD => 1, :EUR => 0.9})
+    currency_converter = CurrencyConverter.new({ :USD => 1, :EUR => 0.9 })
     us_currency = Currency.new(10, :USD)
-    assert_raises(*UnknownCurrencyCodeError) { currency_converter.make_exchange(us_currency, :INR)}
+    assert_raises(*UnknownCurrencyCodeError) { currency_converter.make_exchange(us_currency, :INR) }
   end
 
 end

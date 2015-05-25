@@ -1,6 +1,9 @@
 class DifferentCurrencyCodeError < StandardError
 end
 
+class CanOnlyMultiplyByNumberError < StandardError
+  end
+
 class Currency
   attr_accessor :value, :code
 
@@ -32,6 +35,8 @@ class Currency
   def * (num)
     if num.is_a?(Fixnum) || num.is_a?(Float)
       @value *= num
+    else
+      raise CanOnlyMultiplyByNumberError
     end
   end
 end
